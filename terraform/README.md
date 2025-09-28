@@ -51,8 +51,6 @@ Update the values in `dev/terraform.tfvars` and `prod/terraform.tfvars`:
 - `hosted_zone_name`: Your domain name
 - `domain_certificate_arn`: ACM certificate ARN for API Gateway
 - `certificate_arn`: ACM certificate ARN for CloudFront
-- `pdf_function_arn`: ARN of PDF processing Lambda (optional)
-- `sqs_function_arn`: ARN of SQS processing Lambda (optional)
 - `environment_variables`: Environment variables for Lambda function
 
 ## Resources Created

@@ -34,28 +34,6 @@ resource "aws_iam_role_policy" "lambda_logs_policy" {
   })
 }
 
-resource "aws_iam_role_policy" "lambda_invoke_policy" {
-  count = var.pdf_function_arn != "" || var.sqs_function_arn != "" ? 1 : 0
-  name  = "${var.stack_name}-lambda-invoke-policy"
-  role  = aws_iam_role.lambda_execution_role.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "lambda:InvokeFunction",
-          "lambda:InvokeAsync"
-        ]
-        Resource = compact([
-          var.pdf_function_arn,
-          var.sqs_function_arn
-        ])
-      }
-    ]
-  })
-}
 
 resource "aws_iam_role_policy" "lambda_vpc_access_policy" {
   name = "${var.stack_name}-lambda-vpc-access"
@@ -87,8 +65,8 @@ resource "aws_lambda_function" "lambda_function" {
   memory_size  = 512
   architectures = ["arm64"]
 
-  filename         = "${path.module}/lambda.zip"
-  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+  filename         = "${path.module}/lambda-deployment.zip"
+  source_code_hash = filebase64sha256("${path.module}/lambda-deployment.zip")
 
   ephemeral_storage {
     size = 512
@@ -104,24 +82,24 @@ resource "aws_lambda_function" "lambda_function" {
       variables = var.environment_variables
     }
   }
+
+  # Dependency on Log Group
+  depends_on = [aws_cloudwatch_log_group.lambda_logs]
 }
 
-data "archive_file" "lambda_zip" {
-  type        = "zip"
-  output_path = "${path.module}/lambda.zip"
-  source {
-    content = <<EOF
-exports.handler = async (event) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify('Hello from Lambda!'),
-  };
-  return response;
-};
-EOF
-    filename = "lambda.js"
+# CloudWatch Log Group
+resource "aws_cloudwatch_log_group" "lambda_logs" {
+  name              = "/aws/lambda/${var.stack_name}"  # Use exact function name
+  retention_in_days = 7  # Keep logs for 7 days
+
+  # Size limitation: automatically delete old logs when exceeded
+  # CloudWatch doesn't support direct size limitation, but retention helps
+
+  tags = {
+    Name = "${var.stack_name}-lambda-logs"
   }
 }
+
 
 # Lambda Invoke Role for Scheduler
 resource "aws_iam_role" "lambda_invoke_role" {

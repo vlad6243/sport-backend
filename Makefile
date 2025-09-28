@@ -1,4 +1,22 @@
-.PHONY: up down logs shell migrate migrate-create migrate-revert build clean
+.PHONY: up down logs shell migrate migrate-create migrate-revert build clean init plan apply init-dev plan-dev apply-dev init-prod plan-prod apply-prod
+
+# Terraform variables
+TERRAFORM_DIR := terraform
+ENV ?= dev
+
+# Environment-specific Terraform commands
+init: ## Initialize Terraform for current environment
+	cd $(TERRAFORM_DIR) && terraform init
+	cd $(TERRAFORM_DIR) && terraform workspace select -or-create $(ENV)
+
+plan: ## Plan Terraform changes for current environment
+	cd $(TERRAFORM_DIR) && terraform workspace select -or-create $(ENV)
+	cd $(TERRAFORM_DIR) && terraform plan -var-file=$(ENV)/terraform.tfvars
+
+apply: ## Apply Terraform changes for current environment
+	cd $(TERRAFORM_DIR) && terraform workspace select -or-create $(ENV)
+	cd $(TERRAFORM_DIR) && terraform apply -var-file=$(ENV)/terraform.tfvars -auto-approve
+	@echo "🚀 Terraform applied for $(ENV) environment"
 
 # Docker commands
 up:
@@ -74,9 +92,22 @@ install-newman:
 # Development workflow
 dev: up migrate logs
 
+# Environment-specific workflows
+deploy: init plan apply ## Deploy to environment (use ENV=dev or ENV=prod)
+
 # Show help
 help:
 	@echo "Available commands:"
+	@echo "Terraform commands:"
+	@echo "  init            - Initialize Terraform for current environment (ENV=dev by default)"
+	@echo "  plan            - Plan Terraform changes for current environment"
+	@echo "  apply           - Apply Terraform changes for current environment"
+	@echo "  init-dev        - Initialize Terraform for dev environment"
+	@echo "  plan-dev        - Plan Terraform changes for dev environment"
+	@echo "  init-prod       - Initialize Terraform for prod environment"
+	@echo "  plan-prod       - Plan Terraform changes for prod environment"
+	@echo "  deploy          - Full deployment (use ENV=dev or ENV=prod, default: dev)"
+	@echo ""
 	@echo "Docker commands:"
 	@echo "  up              - Start containers"
 	@echo "  down            - Stop containers"

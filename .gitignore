@@ -45,5 +45,12 @@ terraform/.terraform/
 terraform/terraform.tfstate*
 terraform/.terraform.lock.hcl
 terraform/*.zip
+terraform/terraform.tfvars
+terraform/backend.tf
+terraform/dev/terraform.tfvars
+terraform/prod/terraform.tfvars
+
+# Deployment packages
+terraform/modules/lambda/lambda-deployment.zip
 
 .env

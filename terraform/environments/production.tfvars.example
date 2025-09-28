@@ -1,0 +1,30 @@
+# Production environment configuration
+
+# Infrastructure
+stack_name = "sportbackend-prod"
+aws_region = "us-east-1"
+
+# Lambda environment variables
+environment_variables = {
+  NODE_ENV = "production"
+
+  # Database (replace with your RDS settings)
+  DB_HOST     = "sportbackend-prod.xxxxx.us-east-1.rds.amazonaws.com"
+  DB_PORT     = "5432"
+  DB_USERNAME = "sportbackend"
+  DB_PASSWORD = "REPLACE_WITH_SECURE_PASSWORD"
+  DB_NAME     = "sportbackend"
+
+  # Authentication
+  JWT_SECRET     = "REPLACE_WITH_SECURE_JWT_SECRET_AT_LEAST_32_CHARS"
+  JWT_EXPIRES_IN = "24h"
+
+  # Optional: Add more environment variables as needed
+  # LOG_LEVEL = "info"
+  # API_RATE_LIMIT = "100"
+}
+
+
+# Security Note:
+# Never commit real credentials to git!
+# Use AWS Secrets Manager or Parameter Store for sensitive data

@@ -8,6 +8,7 @@
     "start:dev": "ts-node src/main.ts",
     "start:debug": "ts-node --inspect-brk src/main.ts",
     "start:prod": "node dist/main",
+    "build:lambda": "webpack && zip -j terraform/modules/lambda/lambda-deployment.zip dist/lambda.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/config/typeorm.config.ts",
     "migration:run": "typeorm-ts-node-commonjs migration:run -d src/config/typeorm.config.ts",
@@ -27,7 +28,7 @@
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.6",
     "@nestjs/jwt": "^11.0.0",
-    "@nestjs/platform-express": "^11.1.6",
+    "@nestjs/platform-fastify": "^11.1.6",
     "@nestjs/typeorm": "^11.0.0",
     "bcryptjs": "^3.0.2",
     "class-transformer": "^0.5.1",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.10",
+    "@types/aws-lambda": "^8.10.152",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^24.5.2",
     "@types/pg": "^8.15.5",
@@ -48,7 +50,12 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.0",
+    "terser-webpack-plugin": "^5.3.14",
+    "ts-loader": "^9.5.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }

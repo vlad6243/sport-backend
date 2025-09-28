@@ -2,7 +2,6 @@
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "${var.stack_name}-api"
   protocol_type = "HTTP"
-  disable_execute_api_endpoint = true
 }
 
 resource "aws_apigatewayv2_stage" "default_stage" {
@@ -38,19 +37,3 @@ resource "aws_lambda_permission" "lambda_invoke_permission" {
   principal     = "apigateway.amazonaws.com"
 }
 
-# Domain Name and Certificate
-resource "aws_apigatewayv2_domain_name" "api_domain" {
-  domain_name = "${var.subdomain}.${var.hosted_zone_name}"
-
-  domain_name_configuration {
-    certificate_arn = var.domain_certificate_arn
-    endpoint_type   = "REGIONAL"
-    security_policy = "TLS_1_2"
-  }
-}
-
-resource "aws_apigatewayv2_api_mapping" "api_mapping" {
-  api_id      = aws_apigatewayv2_api.http_api.id
-  domain_name = aws_apigatewayv2_domain_name.api_domain.id
-  stage       = "$default"
-}
