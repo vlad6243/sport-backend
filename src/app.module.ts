@@ -27,6 +27,7 @@ import configuration from './config/configuration';
         entities: [User, Role],
         synchronize: false,
         migrationsRun: true,
+        ssl: configService.get('database.ssl'),
         migrations: ['dist/migrations/*.js'],
         logging: configService.get('environment') === 'development',
       }),

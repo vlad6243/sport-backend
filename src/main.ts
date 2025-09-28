@@ -10,6 +10,16 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  // Enable CORS for web and mobile app
+  app.enableCors({
+    origin: true, // Разрешить все origins в dev режиме
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
+    credentials: false, // Убираем credentials для упрощения
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  });
+
   // Initialize default roles
   const roleService = app.get(RoleService);
   await roleService.createDefaultRoles();

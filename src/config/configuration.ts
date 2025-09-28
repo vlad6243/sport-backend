@@ -11,5 +11,8 @@ export default () => ({
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || 'postgres',
     name: process.env.DB_NAME || 'sportbackend',
+    ssl: process.env.DB_SSL === 'true' ? {
+      rejectUnauthorized: false
+    } : false,
   },
 });
