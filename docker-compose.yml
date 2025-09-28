@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  back:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/home/node/app/src:delegated
+      - ./package.json:/home/node/app/package.json:delegated
+      - ./package-lock.json:/home/node/app/package-lock.json:delegated
+      - ./tsconfig.json:/home/node/app/tsconfig.json:delegated
+      - ./nest-cli.json:/home/node/app/nest-cli.json:delegated
+      - ./.swcrc:/home/node/app/.swcrc:delegated
+      - /home/node/app/node_modules
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: local
+      SHOW_CONFIGS: 'true'
+      IS_EMAIL_ENABLED: false
+      NODE_OPTIONS: --max-old-space-size=4096
+      # Enable polling for file changes in Docker
+      CHOKIDAR_USEPOLLING: true
