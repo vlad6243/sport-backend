@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  ManyToMany,
+} from 'typeorm';
 import { User } from './user.entity';
 
 export enum RoleName {
@@ -15,7 +21,7 @@ export class Role {
   @Column({
     type: 'enum',
     enum: RoleName,
-    unique: true
+    unique: true,
   })
   name: RoleName;
 

@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { User } from './user/user.entity';
-import { Role } from './user/role.entity';
+import { WorkoutModule } from './workout/workout.module';
+import { LibraryModule } from './library/library.module';
+import { DatabaseModule } from './database/database.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -15,26 +15,11 @@ import configuration from './config/configuration';
       load: [configuration],
       isGlobal: true,
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get('database.host'),
-        port: configService.get('database.port'),
-        username: configService.get('database.username'),
-        password: configService.get('database.password'),
-        database: configService.get('database.name'),
-        entities: [User, Role],
-        synchronize: false,
-        migrationsRun: true,
-        ssl: configService.get('database.ssl'),
-        migrations: ['dist/migrations/*.js'],
-        logging: configService.get('environment') === 'development',
-      }),
-      inject: [ConfigService],
-    }),
+    DatabaseModule,
     UserModule,
     AuthModule,
+    WorkoutModule,
+    LibraryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

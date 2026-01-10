@@ -11,8 +11,18 @@ export default () => ({
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || 'postgres',
     name: process.env.DB_NAME || 'sportbackend',
-    ssl: process.env.DB_SSL === 'true' ? {
-      rejectUnauthorized: false
-    } : false,
+    ssl:
+      process.env.DB_SSL === 'true'
+        ? {
+            rejectUnauthorized: false,
+          }
+        : false,
+  },
+  telegram: {
+    botToken: process.env.TELEGRAM_BOT_TOKEN || '',
+    authMaxAgeSeconds: parseInt(
+      process.env.TELEGRAM_AUTH_MAX_AGE || '86400',
+      10,
+    ),
   },
 });

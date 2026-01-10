@@ -1,6 +1,7 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
+import { TelegramAuthDto } from './dto/telegram-auth.dto';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { Auth } from './decorators/auth.decorator';
 import { CurrentUser } from './decorators/current-user.decorator';
@@ -18,6 +19,11 @@ export class AuthController {
   @Post('login')
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
+  }
+
+  @Post('telegram')
+  async telegramLogin(@Body() telegramAuthDto: TelegramAuthDto) {
+    return this.authService.telegramLogin(telegramAuthDto.initData);
   }
 
   @Get('profile')

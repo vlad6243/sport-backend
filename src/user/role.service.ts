@@ -17,7 +17,10 @@ export class RoleService {
   async createDefaultRoles(): Promise<void> {
     const roles = [
       { name: RoleName.ADMIN, description: 'Administrator with full access' },
-      { name: RoleName.MODERATOR, description: 'Moderator with limited admin access' },
+      {
+        name: RoleName.MODERATOR,
+        description: 'Moderator with limited admin access',
+      },
       { name: RoleName.USER, description: 'Regular user' },
     ];
 

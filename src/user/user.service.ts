@@ -46,14 +46,14 @@ export class UserService {
   async findByEmail(email: string): Promise<User | null> {
     return this.userRepository.findOne({
       where: { email },
-      relations: ['roles']
+      relations: ['roles'],
     });
   }
 
   async findById(id: string): Promise<Omit<User, 'password'> | null> {
     const user = await this.userRepository.findOne({
       where: { id },
-      relations: ['roles']
+      relations: ['roles'],
     });
     if (!user) return null;
 
@@ -97,7 +97,22 @@ export class UserService {
     await this.userRepository.save(user);
   }
 
-  async validatePassword(plainPassword: string, hashedPassword: string): Promise<boolean> {
+  async validatePassword(
+    plainPassword: string,
+    hashedPassword: string,
+  ): Promise<boolean> {
     return bcrypt.compare(plainPassword, hashedPassword);
+  }
+
+  async updateProfile(
+    userId: string,
+    updates: Partial<Pick<User, 'firstName' | 'lastName' | 'lang'>>,
+  ): Promise<Omit<User, 'password'> | null> {
+    if (!Object.keys(updates).length) {
+      return this.findById(userId);
+    }
+
+    await this.userRepository.update(userId, updates);
+    return this.findById(userId);
   }
 }
