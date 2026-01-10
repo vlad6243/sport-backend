@@ -44,7 +44,6 @@ export class SeedService {
       // Seed trainer tips
       this.logger.log('💡 Seeding trainer tips...');
       await seedTrainerTips(this.trainerTipRepository);
-
       this.logger.log('✅ Library seeding completed successfully!');
     } catch (error) {
       this.logger.error('❌ Error during seeding:', error);

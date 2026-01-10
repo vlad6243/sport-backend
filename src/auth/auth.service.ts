@@ -120,7 +120,6 @@ export class AuthService {
       const payload = this.jwtService.verify(token);
       const user = await this.userService.findById(payload.sub);
       if (user) {
-        console.log('Validated user:', user, payload);
         // Use lang from token if available (in case user updated their language)
         user.lang = payload.lang || user.lang || 'en';
       }
@@ -149,4 +148,5 @@ export class AuthService {
 
     return undefined;
   }
+
 }

@@ -67,6 +67,5 @@ async function bootstrap() {
   const port = configService.get<number>('port');
   await app.listen(port, '0.0.0.0');
 
-  console.log(`🚀 NestJS + Fastify running on: http://localhost:${port}`);
 }
 bootstrap();

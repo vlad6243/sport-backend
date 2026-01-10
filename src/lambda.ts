@@ -3,25 +3,12 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import { ValidationPipe, ConsoleLogger } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { RoleService } from './user/role.service';
 import { APIGatewayProxyResult, Context } from 'aws-lambda';
-
-// Custom logger that only logs errors and important events
-class LambdaLogger extends ConsoleLogger {
-  log(message: string) {
-    // Ignore regular logs (RouterExplorer, RoutesResolver, etc.)
-  }
-
-  error(message: string, trace?: string) {
-    super.error(message, trace); // Only log errors
-  }
-
-  warn(message: string) {
-    super.warn(message); // And warnings
-  }
-}
+import { LanguageInterceptor } from './common/interceptors/language.interceptor';
+import { JwtService } from '@nestjs/jwt';
 
 let cachedApp: NestFastifyApplication;
 
@@ -33,9 +20,7 @@ async function bootstrap() {
         logger: false,
         trustProxy: true,
       }),
-      {
-        logger: new LambdaLogger(), // Use custom logger
-      },
+      { logger: false },
     );
 
     app.useGlobalPipes(
@@ -44,6 +29,9 @@ async function bootstrap() {
         whitelist: true,
       }),
     );
+
+    const jwtService = app.get(JwtService);
+    app.useGlobalInterceptors(new LanguageInterceptor(jwtService));
 
     app.enableCors({
       origin: true,
@@ -69,7 +57,6 @@ async function bootstrap() {
     await app.getHttpAdapter().getInstance().ready();
 
     cachedApp = app;
-    // console.log('🚀 NestJS + Fastify Lambda initialized'); // Removed to save logs
   }
 
   return cachedApp;
@@ -79,8 +66,6 @@ export const handler = async (
   event: any, // Use any to support both v1 and v2 formats
   context: Context,
 ): Promise<APIGatewayProxyResult> => {
-  // console.log('Lambda event:', JSON.stringify(event, null, 2)); // Debug only
-
   const app = await bootstrap();
   const fastifyInstance = app.getHttpAdapter().getInstance();
 
@@ -94,8 +79,6 @@ export const handler = async (
     (event.queryStringParameters
       ? '?' + new URLSearchParams(event.queryStringParameters).toString()
       : '');
-
-  // console.log('Processed URL:', url, 'Method:', method); // Debug only
 
   try {
     const response = await fastifyInstance.inject({
@@ -113,8 +96,6 @@ export const handler = async (
       isBase64Encoded: false,
     };
   } catch (error) {
-    console.error('Lambda handler error:', error);
-
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },

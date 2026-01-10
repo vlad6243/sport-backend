@@ -41,9 +41,11 @@ module.exports = {
           '@nestjs/microservices',
           '@nestjs/websockets/socket-module',
           '@nestjs/websockets',
+          '@nestjs/platform-express',
           '@nestjs/platform-socket.io',
           'class-transformer/storage',
           'pg-native',
+          'pg-query-stream',
           '@fastify/static',
           '@fastify/view',
           'mongodb',
@@ -58,6 +60,7 @@ module.exports = {
           '@sap/hana-client',
           '@sap/hana-client/extension/Stream',
           'oracledb',
+          'redis',
           'kafkajs',
           'nats',
           'mqtt',
@@ -66,6 +69,7 @@ module.exports = {
           'amqp-connection-manager',
           '@grpc/grpc-js',
           '@grpc/proto-loader',
+          'typeorm-aurora-data-api-driver',
         ];
 
         if (lazyImports.includes(resource)) {

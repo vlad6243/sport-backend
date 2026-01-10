@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import { createHmac, timingSafeEqual } from 'crypto';
 
 export interface TelegramInitDataUser {
   id: number;
@@ -35,12 +35,10 @@ export function validateTelegramInitData(
     .map(([key, value]) => `${key}=${value}`)
     .join('\n');
 
-  const secretKey = crypto
-    .createHmac('sha256', 'WebAppData')
+  const secretKey = createHmac('sha256', 'WebAppData')
     .update(botToken)
     .digest();
-  const calculatedHash = crypto
-    .createHmac('sha256', secretKey)
+  const calculatedHash = createHmac('sha256', secretKey)
     .update(dataCheckString)
     .digest('hex');
 
@@ -48,7 +46,7 @@ export function validateTelegramInitData(
   const calculatedBuffer = Buffer.from(calculatedHash, 'hex');
   if (
     providedBuffer.length !== calculatedBuffer.length ||
-    !crypto.timingSafeEqual(providedBuffer, calculatedBuffer)
+    !timingSafeEqual(providedBuffer, calculatedBuffer)
   ) {
     throw new Error('Invalid initData hash');
   }
