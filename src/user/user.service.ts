@@ -1,11 +1,18 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcryptjs';
 import { User } from './user.entity';
-import { Role, RoleName } from './role.entity';
-import { CreateUserDto } from './dto/create-user.dto';
+import { RoleName } from './role.entity';
 import { RoleService } from './role.service';
+
+interface CreateTelegramUserInput {
+  telegramId: string;
+  firstName: string;
+  lastName?: string;
+  username?: string;
+  photoUrl?: string;
+  lang?: string;
+}
 
 @Injectable()
 export class UserService {
@@ -15,21 +22,24 @@ export class UserService {
     private readonly roleService: RoleService,
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<Omit<User, 'password'>> {
+  async createFromTelegram(
+    input: CreateTelegramUserInput,
+  ): Promise<User> {
     const existingUser = await this.userRepository.findOne({
-      where: { email: createUserDto.email },
+      where: { telegramId: input.telegramId },
     });
 
     if (existingUser) {
-      throw new ConflictException('User with this email already exists');
+      throw new ConflictException('User with this Telegram ID already exists');
     }
 
-    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
     const user = this.userRepository.create({
-      email: createUserDto.email,
-      password: hashedPassword,
-      firstName: createUserDto.firstName,
-      lastName: createUserDto.lastName,
+      telegramId: input.telegramId,
+      firstName: input.firstName,
+      lastName: input.lastName,
+      username: input.username,
+      photoUrl: input.photoUrl,
+      ...(input.lang ? { lang: input.lang } : {}),
     });
 
     // Assign default USER role
@@ -39,26 +49,24 @@ export class UserService {
     }
 
     const savedUser = await this.userRepository.save(user);
-    const { password, ...result } = savedUser;
-    return result;
+    return savedUser;
   }
 
-  async findByEmail(email: string): Promise<User | null> {
+  async findByTelegramId(telegramId: string): Promise<User | null> {
     return this.userRepository.findOne({
-      where: { email },
+      where: { telegramId },
       relations: ['roles'],
     });
   }
 
-  async findById(id: string): Promise<Omit<User, 'password'> | null> {
+  async findById(id: string): Promise<User | null> {
     const user = await this.userRepository.findOne({
       where: { id },
       relations: ['roles'],
     });
     if (!user) return null;
 
-    const { password, ...result } = user;
-    return result;
+    return user;
   }
 
   async addRoleToUser(userId: string, roleName: RoleName): Promise<void> {
@@ -97,17 +105,12 @@ export class UserService {
     await this.userRepository.save(user);
   }
 
-  async validatePassword(
-    plainPassword: string,
-    hashedPassword: string,
-  ): Promise<boolean> {
-    return bcrypt.compare(plainPassword, hashedPassword);
-  }
-
   async updateProfile(
     userId: string,
-    updates: Partial<Pick<User, 'firstName' | 'lastName' | 'lang'>>,
-  ): Promise<Omit<User, 'password'> | null> {
+    updates: Partial<
+      Pick<User, 'firstName' | 'lastName' | 'lang' | 'username' | 'photoUrl'>
+    >,
+  ): Promise<User | null> {
     if (!Object.keys(updates).length) {
       return this.findById(userId);
     }

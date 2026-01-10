@@ -56,9 +56,19 @@ export class LanguageInterceptor implements NestInterceptor {
     }
 
     if (typeof data === 'object') {
-      // Check if this is a translated object (has ru, en, uk keys)
+      // Check if this is a translated object (has ru, en, ua/uk keys)
       if (this.isTranslatedObject(data)) {
-        return data[lang] || data['en'] || Object.values(data)[0];
+        const normalizedLang = lang === 'uk' ? 'ua' : lang;
+        if (normalizedLang === 'ua') {
+          return data.ua || data.uk || data.en || Object.values(data)[0];
+        }
+        return (
+          data[normalizedLang] ||
+          data.en ||
+          data.ua ||
+          data.uk ||
+          Object.values(data)[0]
+        );
       }
 
       // Transform nested objects
@@ -80,11 +90,10 @@ export class LanguageInterceptor implements NestInterceptor {
     }
 
     const keys = Object.keys(obj);
-    const hasTranslationKeys = ['ru', 'en', 'uk'].some(key =>
-      keys.includes(key),
-    );
+    const languageKeys = ['ru', 'en', 'ua', 'uk'];
+    const hasTranslationKeys = languageKeys.some(key => keys.includes(key));
     const allKeysAreLanguages = keys.every(key =>
-      ['ru', 'en', 'uk'].includes(key),
+      languageKeys.includes(key),
     );
 
     return hasTranslationKeys && allKeysAreLanguages;

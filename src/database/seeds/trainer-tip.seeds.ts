@@ -13,12 +13,12 @@ export async function seedTrainerTips(
       title: {
         ru: 'Секрет постоянства в тренировках',
         en: 'The Secret of Training Consistency',
-        uk: 'Секрет постійності в тренуваннях',
+        ua: 'Секрет постійності в тренуваннях',
       },
       summary: {
         ru: 'Как сделать тренировки привычкой и не бросать через неделю',
         en: 'How to make training a habit and not quit after a week',
-        uk: 'Як зробити тренування звичкою і не кидати через тиждень',
+        ua: 'Як зробити тренування звичкою і не кидати через тиждень',
       },
       content: {
         ru: `Главная ошибка новичков - пытаться изменить всё сразу. Вместо этого:
@@ -39,7 +39,7 @@ export async function seedTrainerTips(
 5. Find a partner or join a group
 
 Remember: it's better to train regularly with lower intensity than intensely but rarely. Consistency is more important than intensity.`,
-        uk: `Головна помилка новачків - намагатися змінити все одразу. Замість цього:
+        ua: `Головна помилка новачків - намагатися змінити все одразу. Замість цього:
 
 1. Почніть з малого - 2-3 тренування на тиждень по 30 хвилин
 2. Оберіть зручний час і дотримуйтесь його
@@ -51,14 +51,14 @@ Remember: it's better to train regularly with lower intensity than intensely but
       },
       category: TipCategory.MOTIVATION,
       tags: [
-        { ru: 'постоянство', en: 'consistency', uk: 'постійність' },
-        { ru: 'привычки', en: 'habits', uk: 'звички' },
-        { ru: 'новичкам', en: 'beginners', uk: 'новачкам' },
+        { ru: 'постоянство', en: 'consistency', ua: 'постійність' },
+        { ru: 'привычки', en: 'habits', ua: 'звички' },
+        { ru: 'новичкам', en: 'beginners', ua: 'новачкам' },
       ],
       authorName: {
         ru: 'Дмитрий Петров',
         en: 'Dmitry Petrov',
-        uk: 'Дмитро Петров',
+        ua: 'Дмитро Петров',
       },
       readingTime: 3,
     },
@@ -66,12 +66,12 @@ Remember: it's better to train regularly with lower intensity than intensely but
       title: {
         ru: 'Как не потерять мотивацию',
         en: 'How to Stay Motivated',
-        uk: 'Як не втратити мотивацію',
+        ua: 'Як не втратити мотивацію',
       },
       summary: {
         ru: 'Практические советы для поддержания мотивации на долгой дистанции',
         en: 'Practical tips for maintaining motivation in the long run',
-        uk: 'Практичні поради для підтримки мотивації на довгій дистанції',
+        ua: 'Практичні поради для підтримки мотивації на довгій дистанції',
       },
       content: {
         ru: `Мотивация приходит и уходит. Вот что делать, когда она на нуле:
@@ -92,7 +92,7 @@ Remember: it's better to train regularly with lower intensity than intensely but
 5. Set a new short-term goal
 
 Motivation is not a constant, it's a wave. Learn to work without it, relying on discipline.`,
-        uk: `Мотивація приходить і йде. Ось що робити, коли вона на нулі:
+        ua: `Мотивація приходить і йде. Ось що робити, коли вона на нулі:
 
 1. Згадайте свою початкову мету - чому ви почали
 2. Перегляньте фото "до" і порівняйте з поточними
@@ -104,14 +104,14 @@ Motivation is not a constant, it's a wave. Learn to work without it, relying on 
       },
       category: TipCategory.MOTIVATION,
       tags: [
-        { ru: 'мотивация', en: 'motivation', uk: 'мотивація' },
-        { ru: 'цели', en: 'goals', uk: 'цілі' },
-        { ru: 'психология', en: 'psychology', uk: 'психологія' },
+        { ru: 'мотивация', en: 'motivation', ua: 'мотивація' },
+        { ru: 'цели', en: 'goals', ua: 'цілі' },
+        { ru: 'психология', en: 'psychology', ua: 'психологія' },
       ],
       authorName: {
         ru: 'Дмитрий Петров',
         en: 'Dmitry Petrov',
-        uk: 'Дмитро Петров',
+        ua: 'Дмитро Петров',
       },
       readingTime: 2,
     },
@@ -121,12 +121,12 @@ Motivation is not a constant, it's a wave. Learn to work without it, relying on 
       title: {
         ru: 'Правильная техника приседаний',
         en: 'Proper Squat Technique',
-        uk: 'Правильна техніка присідань',
+        ua: 'Правильна техніка присідань',
       },
       summary: {
         ru: 'Избегайте травм - научитесь приседать правильно',
         en: 'Avoid injuries - learn to squat correctly',
-        uk: 'Уникайте травм - навчіться присідати правильно',
+        ua: 'Уникайте травм - навчіться присідати правильно',
       },
       content: {
         ru: `Приседания - король упражнений, но только при правильной технике:
@@ -169,7 +169,7 @@ Motivation is not a constant, it's a wave. Learn to work without it, relying on 
 - Rising on toes - press through heels
 
 Start without weight, practice technique for 100 reps, only then add load.`,
-        uk: `Присідання - король вправ, але тільки при правильній техніці:
+        ua: `Присідання - король вправ, але тільки при правильній техніці:
 
 **Постановка:**
 - Ноги на ширині плечей або трохи ширше
@@ -192,14 +192,14 @@ Start without weight, practice technique for 100 reps, only then add load.`,
       },
       category: TipCategory.TECHNIQUE,
       tags: [
-        { ru: 'приседания', en: 'squats', uk: 'присідання' },
-        { ru: 'техника', en: 'technique', uk: 'техніка' },
-        { ru: 'базовые упражнения', en: 'basic exercises', uk: 'базові вправи' },
+        { ru: 'приседания', en: 'squats', ua: 'присідання' },
+        { ru: 'техника', en: 'technique', ua: 'техніка' },
+        { ru: 'базовые упражнения', en: 'basic exercises', ua: 'базові вправи' },
       ],
       authorName: {
         ru: 'Алексей Иванов',
         en: 'Alexey Ivanov',
-        uk: 'Олексій Іванов',
+        ua: 'Олексій Іванов',
       },
       readingTime: 4,
     },
@@ -207,12 +207,12 @@ Start without weight, practice technique for 100 reps, only then add load.`,
       title: {
         ru: 'Дыхание при выполнении упражнений',
         en: 'Breathing During Exercise',
-        uk: 'Дихання при виконанні вправ',
+        ua: 'Дихання при виконанні вправ',
       },
       summary: {
         ru: 'Как правильно дышать для максимальной эффективности',
         en: 'How to breathe correctly for maximum effectiveness',
-        uk: 'Як правильно дихати для максимальної ефективності',
+        ua: 'Як правильно дихати для максимальної ефективності',
       },
       content: {
         ru: `Правильное дыхание увеличивает силу и снижает риск травм:
@@ -249,7 +249,7 @@ Start without weight, practice technique for 100 reps, only then add load.`,
 - Breathe through nose during cardio
 
 Master proper breathing - it will add 10-15% to your results.`,
-        uk: `Правильне дихання збільшує силу та знижує ризик травм:
+        ua: `Правильне дихання збільшує силу та знижує ризик травм:
 
 **Базове правило:**
 - Видих на зусиллі (підйом ваги)
@@ -269,14 +269,14 @@ Master proper breathing - it will add 10-15% to your results.`,
       },
       category: TipCategory.TECHNIQUE,
       tags: [
-        { ru: 'дыхание', en: 'breathing', uk: 'дихання' },
-        { ru: 'техника', en: 'technique', uk: 'техніка' },
-        { ru: 'безопасность', en: 'safety', uk: 'безпека' },
+        { ru: 'дыхание', en: 'breathing', ua: 'дихання' },
+        { ru: 'техника', en: 'technique', ua: 'техніка' },
+        { ru: 'безопасность', en: 'safety', ua: 'безпека' },
       ],
       authorName: {
         ru: 'Алексей Иванов',
         en: 'Alexey Ivanov',
-        uk: 'Олексій Іванов',
+        ua: 'Олексій Іванов',
       },
       readingTime: 3,
     },
@@ -286,12 +286,12 @@ Master proper breathing - it will add 10-15% to your results.`,
       title: {
         ru: 'Питание для набора массы',
         en: 'Nutrition for Muscle Gain',
-        uk: 'Харчування для набору маси',
+        ua: 'Харчування для набору маси',
       },
       summary: {
         ru: 'Что есть, чтобы расти, а не толстеть',
         en: 'What to eat to grow muscle, not fat',
-        uk: 'Що їсти, щоб рости, а не товстішати',
+        ua: 'Що їсти, щоб рости, а не товстішати',
       },
       content: {
         ru: `Набор массы = профицит калорий + достаточно белка + правильный тренинг.
@@ -340,7 +340,7 @@ Master proper breathing - it will add 10-15% to your results.`,
 - Fats: nuts, avocado, oils
 
 Weigh yourself once a week. Gain of 0.3-0.5 kg per week is ideal.`,
-        uk: `Набір маси = профіцит калорій + достатньо білка + правильний тренінг.
+        ua: `Набір маси = профіцит калорій + достатньо білка + правильний тренінг.
 
 **Калорії:**
 - Розрахуйте свою норму (вага × 30-35 ккал)
@@ -366,14 +366,14 @@ Weigh yourself once a week. Gain of 0.3-0.5 kg per week is ideal.`,
       },
       category: TipCategory.NUTRITION,
       tags: [
-        { ru: 'питание', en: 'nutrition', uk: 'харчування' },
-        { ru: 'набор массы', en: 'muscle gain', uk: 'набір маси' },
-        { ru: 'калории', en: 'calories', uk: 'калорії' },
+        { ru: 'питание', en: 'nutrition', ua: 'харчування' },
+        { ru: 'набор массы', en: 'muscle gain', ua: 'набір маси' },
+        { ru: 'калории', en: 'calories', ua: 'калорії' },
       ],
       authorName: {
         ru: 'Мария Смирнова',
         en: 'Maria Smirnova',
-        uk: 'Марія Смирнова',
+        ua: 'Марія Смирнова',
       },
       readingTime: 5,
     },
@@ -381,12 +381,12 @@ Weigh yourself once a week. Gain of 0.3-0.5 kg per week is ideal.`,
       title: {
         ru: 'Питание для похудения',
         en: 'Nutrition for Weight Loss',
-        uk: 'Харчування для схуднення',
+        ua: 'Харчування для схуднення',
       },
       summary: {
         ru: 'Как правильно создать дефицит калорий',
         en: 'How to create a calorie deficit correctly',
-        uk: 'Як правильно створити дефіцит калорій',
+        ua: 'Як правильно створити дефіцит калорій',
       },
       content: {
         ru: `Похудение = дефицит калорий, но с умом:
@@ -439,7 +439,7 @@ Weigh yourself once a week. Gain of 0.3-0.5 kg per week is ideal.`,
 - Fruits: berries, apples (limited)
 
 Rate: 0.5-1 kg per week. Faster = muscle loss.`,
-        uk: `Схуднення = дефіцит калорій, але з розумом:
+        ua: `Схуднення = дефіцит калорій, але з розумом:
 
 **Калорії:**
 - Норма: вага × 30 ккал
@@ -467,14 +467,14 @@ Rate: 0.5-1 kg per week. Faster = muscle loss.`,
       },
       category: TipCategory.NUTRITION,
       tags: [
-        { ru: 'похудение', en: 'weight loss', uk: 'схуднення' },
-        { ru: 'дефицит калорий', en: 'calorie deficit', uk: 'дефіцит калорій' },
-        { ru: 'диета', en: 'diet', uk: 'дієта' },
+        { ru: 'похудение', en: 'weight loss', ua: 'схуднення' },
+        { ru: 'дефицит калорий', en: 'calorie deficit', ua: 'дефіцит калорій' },
+        { ru: 'диета', en: 'diet', ua: 'дієта' },
       ],
       authorName: {
         ru: 'Мария Смирнова',
         en: 'Maria Smirnova',
-        uk: 'Марія Смирнова',
+        ua: 'Марія Смирнова',
       },
       readingTime: 4,
     },
@@ -484,12 +484,12 @@ Rate: 0.5-1 kg per week. Faster = muscle loss.`,
       title: {
         ru: 'Важность восстановления',
         en: 'The Importance of Recovery',
-        uk: 'Важливість відновлення',
+        ua: 'Важливість відновлення',
       },
       summary: {
         ru: 'Мышцы растут не в зале, а во время отдыха',
         en: 'Muscles grow not in the gym, but during rest',
-        uk: 'М\'язи ростуть не в залі, а під час відпочинку',
+        ua: 'М\'язи ростуть не в залі, а під час відпочинку',
       },
       content: {
         ru: `80% результата - это восстановление. Вот как делать это правильно:
@@ -544,7 +544,7 @@ Rate: 0.5-1 kg per week. Faster = muscle loss.`,
 - Decreased immunity
 
 If you see signs - take a full week of rest.`,
-        uk: `80% результату - це відновлення. Ось як робити це правильно:
+        ua: `80% результату - це відновлення. Ось як робити це правильно:
 
 **Сон:**
 - Мінімум 7-8 годин
@@ -573,14 +573,14 @@ If you see signs - take a full week of rest.`,
       },
       category: TipCategory.RECOVERY,
       tags: [
-        { ru: 'восстановление', en: 'recovery', uk: 'відновлення' },
-        { ru: 'сон', en: 'sleep', uk: 'сон' },
-        { ru: 'отдых', en: 'rest', uk: 'відпочинок' },
+        { ru: 'восстановление', en: 'recovery', ua: 'відновлення' },
+        { ru: 'сон', en: 'sleep', ua: 'сон' },
+        { ru: 'отдых', en: 'rest', ua: 'відпочинок' },
       ],
       authorName: {
         ru: 'Сергей Волков',
         en: 'Sergey Volkov',
-        uk: 'Сергій Волков',
+        ua: 'Сергій Волков',
       },
       readingTime: 4,
     },
@@ -588,12 +588,12 @@ If you see signs - take a full week of rest.`,
       title: {
         ru: 'Растяжка и гибкость',
         en: 'Stretching and Flexibility',
-        uk: 'Розтяжка і гнучкість',
+        ua: 'Розтяжка і гнучкість',
       },
       summary: {
         ru: 'Почему растяжка критически важна для роста',
         en: 'Why stretching is critically important for growth',
-        uk: 'Чому розтяжка критично важлива для росту',
+        ua: 'Чому розтяжка критично важлива для росту',
       },
       content: {
         ru: `Растяжка улучшает результаты и предотвращает травмы:
@@ -654,7 +654,7 @@ If you see signs - take a full week of rest.`,
 - Shoulder girdle
 
 5 minutes of stretching = 30% less injury risk.`,
-        uk: `Розтяжка покращує результати та запобігає травмам:
+        ua: `Розтяжка покращує результати та запобігає травмам:
 
 **Навіщо розтягуватися:**
 - Збільшення амплітуди руху
@@ -686,14 +686,14 @@ If you see signs - take a full week of rest.`,
       },
       category: TipCategory.RECOVERY,
       tags: [
-        { ru: 'растяжка', en: 'stretching', uk: 'розтяжка' },
-        { ru: 'гибкость', en: 'flexibility', uk: 'гнучкість' },
-        { ru: 'профилактика', en: 'prevention', uk: 'профілактика' },
+        { ru: 'растяжка', en: 'stretching', ua: 'розтяжка' },
+        { ru: 'гибкость', en: 'flexibility', ua: 'гнучкість' },
+        { ru: 'профилактика', en: 'prevention', ua: 'профілактика' },
       ],
       authorName: {
         ru: 'Сергей Волков',
         en: 'Sergey Volkov',
-        uk: 'Сергій Волков',
+        ua: 'Сергій Волков',
       },
       readingTime: 3,
     },
@@ -703,12 +703,12 @@ If you see signs - take a full week of rest.`,
       title: {
         ru: 'Баланс между работой и спортом',
         en: 'Work-Life-Sport Balance',
-        uk: 'Баланс між роботою та спортом',
+        ua: 'Баланс між роботою та спортом',
       },
       summary: {
         ru: 'Как совмещать карьеру и регулярные тренировки',
         en: 'How to combine career and regular training',
-        uk: 'Як поєднувати кар\'єру та регулярні тренування',
+        ua: 'Як поєднувати кар\'єру та регулярні тренування',
       },
       content: {
         ru: `Нехватка времени - главная отговорка. Вот решение:
@@ -757,7 +757,7 @@ If you see signs - take a full week of rest.`,
 - Stairs instead of elevator
 
 The question is not "when to find time", but "how to prioritize".`,
-        uk: `Нестача часу - головна відмовка. Ось рішення:
+        ua: `Нестача часу - головна відмовка. Ось рішення:
 
 **Планування:**
 - Тренування в календарі як важливі зустрічі
@@ -783,14 +783,14 @@ The question is not "when to find time", but "how to prioritize".`,
       },
       category: TipCategory.LIFESTYLE,
       tags: [
-        { ru: 'баланс', en: 'balance', uk: 'баланс' },
-        { ru: 'работа', en: 'work', uk: 'робота' },
-        { ru: 'тайм-менеджмент', en: 'time management', uk: 'тайм-менеджмент' },
+        { ru: 'баланс', en: 'balance', ua: 'баланс' },
+        { ru: 'работа', en: 'work', ua: 'робота' },
+        { ru: 'тайм-менеджмент', en: 'time management', ua: 'тайм-менеджмент' },
       ],
       authorName: {
         ru: 'Елена Николаева',
         en: 'Elena Nikolaeva',
-        uk: 'Олена Ніколаєва',
+        ua: 'Олена Ніколаєва',
       },
       readingTime: 4,
     },
@@ -800,12 +800,12 @@ The question is not "when to find time", but "how to prioritize".`,
       title: {
         ru: 'Долгосрочное мышление',
         en: 'Long-term Mindset',
-        uk: 'Довгострокове мислення',
+        ua: 'Довгострокове мислення',
       },
       summary: {
         ru: 'Как думать о фитнесе как о стиле жизни, а не диете',
         en: 'How to think about fitness as a lifestyle, not a diet',
-        uk: 'Як думати про фітнес як про стиль життя, а не дієту',
+        ua: 'Як думати про фітнес як про стиль життя, а не дієту',
       },
       content: {
         ru: `Фитнес - это марафон, а не спринт. Меняем мышление:
@@ -858,7 +858,7 @@ The question is not "when to find time", but "how to prioritize".`,
 - Strength and endurance
 
 In 5 years you won't remember how fast you reached your goal, but you'll be proud you didn't quit.`,
-        uk: `Фітнес - це марафон, а не спринт. Змінюємо мислення:
+        ua: `Фітнес - це марафон, а не спринт. Змінюємо мислення:
 
 **Від → До:**
 - "Схуднути до літа" → "Бути здоровим завжди"
@@ -886,14 +886,14 @@ In 5 years you won't remember how fast you reached your goal, but you'll be prou
       },
       category: TipCategory.MINDSET,
       tags: [
-        { ru: 'мышление', en: 'mindset', uk: 'мислення' },
-        { ru: 'стиль жизни', en: 'lifestyle', uk: 'стиль життя' },
-        { ru: 'философия', en: 'philosophy', uk: 'філософія' },
+        { ru: 'мышление', en: 'mindset', ua: 'мислення' },
+        { ru: 'стиль жизни', en: 'lifestyle', ua: 'стиль життя' },
+        { ru: 'философия', en: 'philosophy', ua: 'філософія' },
       ],
       authorName: {
         ru: 'Елена Николаева',
         en: 'Elena Nikolaeva',
-        uk: 'Олена Ніколаєва',
+        ua: 'Олена Ніколаєва',
       },
       readingTime: 3,
     },

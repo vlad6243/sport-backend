@@ -9,7 +9,7 @@ import {
 export interface TranslatedText {
   ru: string;
   en: string;
-  uk: string;
+  ua: string;
 }
 
 export enum TipCategory {

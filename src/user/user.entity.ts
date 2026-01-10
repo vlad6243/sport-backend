@@ -15,16 +15,19 @@ export class User {
   id: string;
 
   @Column({ unique: true })
-  email: string;
-
-  @Column()
-  password: string;
+  telegramId: string;
 
   @Column()
   firstName: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastName: string;
+
+  @Column({ nullable: true })
+  username: string;
+
+  @Column({ nullable: true })
+  photoUrl: string;
 
   @Column({ default: 'en' })
   lang: string;
